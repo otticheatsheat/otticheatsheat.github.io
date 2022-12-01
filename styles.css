@@ -1,0 +1,27 @@
+h1 {text-align: center;}
+h3 {text-align: center;}
+.centered {text-align: center;}
+.block {
+	float:left;
+	margin:25px;
+	border: 0px solid black;
+	width: 256px;
+	height: 456px;
+	}
+.table {
+	width: 256px;
+	}
+.cell {
+	width: 25%;
+	}
+.name{
+	text-align:left;
+	}
+.rarity{
+	width: 25%;
+	text-align: right;
+	}
+.image {
+	width: 256px;
+	height: 256px;
+	}
