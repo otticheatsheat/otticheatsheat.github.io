@@ -1,12 +1,26 @@
 h1 {text-align: center;}
 h3 {text-align: center;}
 .centered {text-align: center;}
-.block {
+.picture_block {
 	float:left;
 	margin:25px;
 	border: 0px solid black;
 	width: 256px;
 	height: 456px;
+	}
+.voice_block {
+	float:left;
+	margin:25px;
+	border: 0px solid black;
+	width: 256px;
+	height: 356px;
+	}
+.personality_block {
+	float:left;
+	margin:25px;
+	border: 0px solid black;
+	width: 256px;
+	height: 256px;
 	}
 .table {
 	width: 256px;
@@ -25,3 +39,4 @@ h3 {text-align: center;}
 	width: 256px;
 	height: 256px;
 	}
+.mp3 {width: 256px;}
