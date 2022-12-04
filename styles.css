@@ -40,3 +40,17 @@ h3 {text-align: center;}
 	height: 256px;
 	}
 .mp3 {width: 256px;}
+.items_ottos_table {
+		width: 100%;
+		border: 1px solid black;
+		border-spacing: 0;
+		border-collapse: collapse;
+		}
+.items_ottos_table_row {
+		margin: 10px;
+		border: 1px solid black;
+		heigth: 100px;
+		}
+.items_ottos_name_cell {width: 256px; border: 1px solid black;}
+.items_ottos_type_cell {width: 100px; border: 1px solid black;}
+.items_ottos_links_cell {border: 1px solid black;}
