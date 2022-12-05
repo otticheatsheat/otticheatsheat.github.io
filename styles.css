@@ -38,6 +38,8 @@ h3 {text-align: center;}
 .image {
 	width: 256px;
 	height: 256px;
+	border: 4px ridge lightgrey;
+	border-radius: 5px;
 	}
 .mp3 {width: 256px;}
 .items_ottos_table {
