@@ -2,7 +2,8 @@
 
 `Some people, when confronted with a problem, think "I know, I'll use regular expressions." Now they have two problems.`
 
-However ...
+
+## However ...
 - `.` (a dot) stands for any character
 - `*` matches the previous item zero or more times
 - `+` mateches the previous item one or more times
