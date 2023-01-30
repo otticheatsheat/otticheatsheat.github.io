@@ -71,3 +71,7 @@ many roads lead to rome, but we can do: `^Gen[12]`
 - last we can use this to filter for item names with inconsistend spelling.
 let's assume we are looking for a "headband" ... easy, but the we realise that some items are "head band"
    - `head ?band` or `(head)( ?)(band)` for easyer readability
+
+- we can use `?=`, a positive lookahead, to achieve the same,
+   - `(?=.*rabbit)(?=.*red)(?=.*lunar new year)` matches red rabbits in the lunar
+	 new year
