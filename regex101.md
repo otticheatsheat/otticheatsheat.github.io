@@ -35,17 +35,25 @@ and so forth ... can google for more, it's powerful.
    - just searching for "0" would give any id that contains a zero
    - `^0$|^64$|^128$` matches the item_id "0", "64" and "128"
 
+
+<br></br>
 - assume we want to search for gen1 and gen2 items in the collection column.
 many roads lead to rome, but we can do: `^Gen[12]`
-   - `^` marks the beginning of the row (in our not that neccessary)
+   - `^` marks the beginning of the row (in our case not that neccessary)
    - `Gen` for obvious reasons
    - `[12]` either one or two
    - could also just match for `[12]` or `1|2`
 
+
+<br></br>
 - we want to search for E2 and E3 items in rarity: `E[23]`
 
+
+<br></br>
 - we want to search for "Voice" or "Mouth" in the type column: `Voice|Mouth`
 
+
+<br></br>
 - we want to search for "Skin type" and "Skin color": `^Skin (type|color)`
    - `^` beginning of the string, not so important in our case
    - `Skin ` the whitespace is important
@@ -53,13 +61,14 @@ many roads lead to rome, but we can do: `^Gen[12]`
    - `Skin type|Skin color` does the same
    - and because there aren't any other possibilities, `type|color` would do too
 
+<br></br>
 - we want to search for the labels "Green" AND "Orange": `(Green.*Orange)|(Orange.*Green)`
    - `(Green.*Orange)` finds entries there Green is before orange with any amount of characters (including comma and whitespace) inbetween
    - `|` logical OR
    - `(Orange.*Green)` same as above, but the other way
    - of course there are more "better" ways to do it ;-)
 
-
+<br></br>
 - i havn't figured how to really have the filter do sensible number filtering, but by regex we could do:
    - `[1-9][0-9]0?` filters for any number from 10 to 100
       - `[1-9]` first digit is 1 to 9
@@ -67,11 +76,12 @@ many roads lead to rome, but we can do: `^Gen[12]`
          - by now we see numbers from ten to 99
       - `0?` third digit is a zero, matched zero or one time
 
-
+<br></br>
 - last we can use this to filter for item names with inconsistend spelling.
 let's assume we are looking for a "headband" ... easy, but the we realise that some items are "head band"
    - `head ?band` or `(head)( ?)(band)` for easyer readability
 
+<br></br>
 - we can use `?=`, a positive lookahead, to achieve the same,
    - `(?=.*rabbit)(?=.*red)(?=.*lunar new year)` matches red rabbits in the lunar
 	 new year
