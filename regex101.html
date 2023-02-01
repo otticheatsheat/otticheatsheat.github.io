@@ -1,4 +1,4 @@
-<h1>tiny regex intro an receipts</h1>
+<h1>tiny regex intro and receipts</h1>
 <p><code>Some people, when confronted with a problem, think &quot;I know, I'll use regular expressions.&quot; Now they have two problems.</code></p>
 <h2>However ...</h2>
 <ul>
@@ -8,8 +8,8 @@
 <li><code>?</code> matches the previous item zero or one time</li>
 <li><code>\</code> escapes special character. <code>\.</code> to match an actual period, <code>\\</code> for an actual backslash</li>
 <li><code>\d</code> any digit [1,2,3,4,5,6,7,8,9,0]</li>
-<li><code>D</code> any character that is NOT a digit</li>
-<li><code>\s</code> any whitespace character, <code>\S</code> anythng not a whitespace character</li>
+<li><code>\D</code> any character that is NOT a digit</li>
+<li><code>\s</code> any whitespace character, <code>\S</code> anything not a whitespace character</li>
 <li><code>\w</code> any word character (letter, word, underscore), <code>\W</code> anything not a word character</li>
 <li><code>[...]</code> anything in the brackets, eg [ab3] matches anything that contains   a or b or 3
 <ul>
@@ -26,6 +26,7 @@
 </ul>
 <p>and so forth ... can google for more, it's powerful.</p>
 <h2>some receipts</h2>
+<h3>match a 0</h3>
 <ul>
 <li>we want to match the item_id &quot;0&quot;: <code>^0$</code>
 <ul>
@@ -33,14 +34,15 @@
 <li><code>0</code> the item to look for</li>
 <li><code>$</code> end of string</li>
 <li>just searching for &quot;0&quot; would give any id that contains a zero</li>
-<li><code>^0$|^64$|^128$</code> matches the item_id &quot;0&quot;, &quot;64&quot; and &quot;128&quot;</li>
+<li><code>^0$|^64$|^128$</code> matches the item_id &quot;0&quot; or &quot;64&quot; or &quot;128&quot;</li>
 </ul>
 </li>
 </ul>
-<p><br></br></p>
+<h3>match Gen1 or Gen2, E2 or E3, Voice or Mouth</h3>
 <ul>
-<li>assume we want to search for gen1 and gen2 items in the collection column.
-many roads lead to rome, but we can do: <code>^Gen[12]</code>
+<li>
+<p>assume we want to search for Gen1 and Gen2 items in the collection column.
+we can do: <code>^Gen[12]</code></p>
 <ul>
 <li><code>^</code> marks the beginning of the row (in our case not that neccessary)</li>
 <li><code>Gen</code> for obvious reasons</li>
@@ -48,16 +50,14 @@ many roads lead to rome, but we can do: <code>^Gen[12]</code>
 <li>could also just match for <code>[12]</code> or <code>1|2</code></li>
 </ul>
 </li>
+<li>
+<p>we want to search for E2 and E3 items in rarity: <code>E[23]</code></p>
+</li>
+<li>
+<p>we want to search for &quot;Voice&quot; or &quot;Mouth&quot; in the type column: <code>Voice|Mouth</code></p>
+</li>
 </ul>
-<p><br></br></p>
-<ul>
-<li>we want to search for E2 and E3 items in rarity: <code>E[23]</code></li>
-</ul>
-<p><br></br></p>
-<ul>
-<li>we want to search for &quot;Voice&quot; or &quot;Mouth&quot; in the type column: <code>Voice|Mouth</code></li>
-</ul>
-<p><br></br></p>
+<h3>Skin type or Skin color</h3>
 <ul>
 <li>we want to search for &quot;Skin type&quot; and &quot;Skin color&quot;: <code>^Skin (type|color)</code>
 <ul>
@@ -65,24 +65,33 @@ many roads lead to rome, but we can do: <code>^Gen[12]</code>
 <li><code>Skin </code> the whitespace is important</li>
 <li><code>(type|color)</code> either &quot;type&quot; or &quot;color&quot;</li>
 <li><code>Skin type|Skin color</code> does the same</li>
-<li>and because there aren't any other possibilities, <code>type|color</code> would do too</li>
+<li>and because there aren't any other possibilities with Skin, <code>type|color</code> would do too</li>
 </ul>
 </li>
 </ul>
-<p><br></br></p>
+<h3>Labels containing Green AND Orange</h3>
 <ul>
-<li>we want to search for the labels &quot;Green&quot; AND &quot;Orange&quot;: <code>(Green.*Orange)|(Orange.*Green)</code>
+<li><code>(Green.*Orange)|(Orange.*Green)</code>
 <ul>
-<li><code>(Green.*Orange)</code> finds entries there Green is before orange with any amount of characters (including comma and whitespace) inbetween</li>
+<li><code>(Green.*Orange)</code> finds entries where Green is before Orange with any amount of characters (including comma and whitespace) inbetween</li>
 <li><code>|</code> logical OR</li>
 <li><code>(Orange.*Green)</code> same as above, but the other way</li>
 <li>of course there are more &quot;better&quot; ways to do it ;-)</li>
 </ul>
 </li>
 </ul>
-<p><br></br></p>
+<h3>Red - Rabbit - Lunar New Year</h3>
 <ul>
-<li>i havn't figured how to really have the filter do sensible number filtering, but by regex we could do:
+<li>we can use <code>?=</code>, a positive lookahead, to achieve the same,
+<ul>
+<li><code>(?=.*rabbit)(?=.*red)(?=.*lunar new year)</code> matches red rabbits in the lunar
+new year</li>
+</ul>
+</li>
+</ul>
+<h3>filter for numbers from 10 to 100</h3>
+<ul>
+<li>i haven't figured how to have the filter do sensible number filtering, but by regex we could do:
 <ul>
 <li><code>[1-9][0-9]0?</code> filters for any number from 10 to 100
 <ul>
@@ -98,21 +107,25 @@ many roads lead to rome, but we can do: <code>^Gen[12]</code>
 </ul>
 </li>
 </ul>
-<p><br></br></p>
+<h3>greater or equal 24</h3>
 <ul>
-<li>last we can use this to filter for item names with inconsistend spelling.
-let's assume we are looking for a &quot;headband&quot; ... easy, but the we realise that some items are &quot;head band&quot;
+<li><code>([2][4-9])|([3-9][0-9])|(\d{3})</code>
 <ul>
-<li><code>head ?band</code> or <code>(head)( ?)(band)</code> for easyer readability</li>
+<li>we divide into three logical group
+<ul>
+<li><code>([2][4-9])</code> 24-29</li>
+<li><code>([3-9][0-9])</code> 30-99</li>
+<li><code>(\d{3})</code> any number of 3 digits length</li>
 </ul>
 </li>
 </ul>
-<p><br></br></p>
+</li>
+</ul>
+<h3>match different writing of the same thing, headband and head band</h3>
 <ul>
-<li>we can use <code>?=</code>, a positive lookahead, to achieve the same,
+<li><code>head ?band</code> or <code>(head)( ?)(band)</code> for easyer readability
 <ul>
-<li><code>(?=.*rabbit)(?=.*red)(?=.*lunar new year)</code> matches red rabbits in the lunar
-new year</li>
+<li>whitespace followed by a <code>?</code> matches the whitespace zero or one time</li>
 </ul>
 </li>
 </ul>
