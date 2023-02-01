@@ -6,7 +6,7 @@
 ## However ...
 - `.` (a dot) stands for any character
 - `*` matches the previous item zero or more times
-- `+` mateches the previous item one or more times
+- `+` matches the previous item one or more times
 - `?` matches the previous item zero or one time
 - `\` escapes special character. `\.` to match an actual period, `\\` for an actual backslash
 - `\d` any digit [1,2,3,4,5,6,7,8,9,0]
